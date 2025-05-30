@@ -2,6 +2,7 @@
 
 import django.contrib.postgres.indexes
 from django.db import migrations, models
+from django.contrib.postgres.operations import TrigramExtension
 
 
 class Migration(migrations.Migration):
@@ -12,15 +13,20 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        TrigramExtension(),
         migrations.CreateModel(
             name='Candidate',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=255)),
                 ('age', models.PositiveIntegerField()),
-                ('gender', models.CharField(choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], max_length=10)),
-                ('email', models.EmailField(help_text="Candidate's email address (must be unique)", max_length=254, unique=True)),
-                ('phone_number', models.CharField(help_text="Candidate's phone number (must be unique)", max_length=20, unique=True)),
+                ('gender', models.CharField(choices=[
+                 ('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')], max_length=10)),
+                ('email', models.EmailField(
+                    help_text="Candidate's email address (must be unique)", max_length=254, unique=True)),
+                ('phone_number', models.CharField(
+                    help_text="Candidate's phone number (must be unique)", max_length=20, unique=True)),
             ],
             options={
                 'ordering': ['name'],
