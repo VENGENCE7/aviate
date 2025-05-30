@@ -1,0 +1,16 @@
+.env
+/__pycache__
+*.pyc
+*.cpython-311.pyc
+req.txt
+# requirements.txt
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+__pycache__/
+**/__pycache__/
+*/__pycache__/
+
+# Virtual Environment
+pyenv
