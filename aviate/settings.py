@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'apps.candidate'
 ]
 
@@ -68,6 +69,13 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}
+
 WSGI_APPLICATION = 'aviate.wsgi.application'
 
 
@@ -75,7 +83,7 @@ WSGI_APPLICATION = 'aviate.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-      "default": config.DATABASE
+    "default": config.DATABASE
 }
 
 

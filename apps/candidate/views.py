@@ -11,7 +11,7 @@ from .serializers import CandidateSerializer
 class CandidateViewSet(viewsets.ModelViewSet):
     queryset = Candidate.objects.all()
     serializer_class = CandidateSerializer
-    pagination_class = None  # Disables pagination for this ViewSet
+
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
@@ -37,7 +37,7 @@ class CandidateViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(filter_conditions)
 
             # Apply relevance annotation and ordering for search results
-            print(search_words)
+            # print(search_words)
             relevance_score_annotation = ExpressionWrapper(
                 Value(0), output_field=IntegerField())
             for word in search_words:
